@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ponderada S7</title>
+    <link rel="stylesheet" href="../static/styles.css">
+    <script src="https://unpkg.com/htmx.org@1.9.11"></script>
+
+</head>
+<body>
+    <header class="titulo">
+        Projeto em Flask com interface de controle do robô
+        <hr>
+        <div>Realisado por Isabelle Beatriz Vasquez Oliveira</div>
+        <hr>
+        <button hx-get="http://localhost:8000/logs" id="logs">Clique aqui para ver o Logs do sistema</button>
+
+        <h1 hx-get="http://localhost:8000/"></h1>
+        <hr>
+    
+        <button hx-get="http://localhost:8000/home" hx-trigger="click">Home</button>
+        <hr>
+    </header>
+    <form method="POST" hx-post="/move">
+        <label for="x">X</label>
+        <input type="number" name="x" id="x">
+        <label for="y">Y</label>
+        <input type="number" name="y" id="y">
+        <label for="z">Z</label>
+        <input type="number" name="z" id="z">
+        <label for="r">R</label>
+        <input type="number" name="r" id="r">
+        <button type="submit">Mover</button>
+    </form>
+    
+</body>
+</html>
