@@ -2,16 +2,22 @@ from flask import Flask, request, render_template, Blueprint, jsonify,redirect
 from tinydb import TinyDB, Query
 from pydobot import Dobot
 from datetime import datetime
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 db = TinyDB('pontos.json')
 buscador = Query()
-
+global dobot
+global dobot_on
+dobot = None
+dobot_on = False
 
 try:
-    dobot = Dobot(port="COM7")
+    dobot = Dobot(port="COM13")
     dobot.speed(100)
     dobot_on = True
+    print(f"Robô configurado")
 except:
     print(f"Erro ao conectar com o robô")
     dobot = None
